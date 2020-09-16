@@ -1,15 +1,11 @@
-import torch
-from torch.autograd import Variable
-import torchvision as tv
 import math
-from PIL import Image
-import numpy as np
-from .box_utils import nms, _preprocess, _preprocess_gpu
+
 import cv2
-from .perf_utils import lp_wrapper
+import numpy as np
+import torch
+import torchvision as tv
 
 
-@lp_wrapper()
 def run_first_stage(args):
     """Run P-Net, generate bounding boxes, and do NMS.
 
@@ -27,7 +23,7 @@ def run_first_stage(args):
             bounding boxes with scores and offsets (4 + 1 + 4).
     """
     imgs = []
-    imgt = args[0][0]
+    # imgt = args[0][0]
     for image, size, net, scale, threshold in args:
         # scale the image and convert it to a float array
         width, height = size

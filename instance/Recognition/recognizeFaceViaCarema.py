@@ -7,12 +7,10 @@ from PIL import Image
 from evolveface.align.detector import detect_faces
 from evolveface.align.visualization_utils_opencv import show_result
 from evolveface.util.extract_feature_v3 import get_embeddings
-from evolveface.util.perf_utils import lp_wrapper
 from instance.calcDistance import calcDistance
 from instance.load_utils import loadModel, loadFaceData
 
 
-@lp_wrapper()
 def Recognize():
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     # Load Reco Model

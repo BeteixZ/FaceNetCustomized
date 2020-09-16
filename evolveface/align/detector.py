@@ -1,10 +1,11 @@
 import numpy as np
-from PIL import Image
 import torch
 import torchvision as tv
-from .get_nets import PNET, RNET, ONET
+from PIL import Image
+
 from .box_utils import nms, calibrate_box, get_image_boxes, convert_to_square
 from .first_stage import run_first_stage
+from .get_nets import PNET, RNET, ONET
 
 
 def detect_faces(image, min_face_size=20.0, thresholds=[0.6, 0.7, 0.8], nms_thresholds=[0.7, 0.7, 0.7]):
@@ -34,7 +35,7 @@ def detect_faces(image, min_face_size=20.0, thresholds=[0.6, 0.7, 0.8], nms_thre
     min_length = min(height, width)
 
     min_detection_size = 12
-    factor = 0.707  # sqrt(0.5)
+    factor = 0.7071067  # sqrt(0.5)
 
     # scales for scaling the image
     scales = []

@@ -14,6 +14,8 @@ def loadModel(modelPath, device):
     backbone = IR_50([112, 112]).to(device)
     backbone.load_state_dict(torch.load(modelPath))
     backbone.to(device)
+    # torch.nn.DataParallel(backbone)
+    # cudnn.benchmark = True
     return backbone
 
 
